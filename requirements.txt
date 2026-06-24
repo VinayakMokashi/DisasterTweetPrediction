@@ -1,0 +1,12 @@
+# Python dependencies for the Disaster Tweet Classification notebook (Code.ipynb).
+# Developed and tested with Python 3.9.
+# Install with:  pip install -r requirements.txt
+
+pandas
+numpy
+scikit-learn
+nltk
+gensim>=4.0          # Word2Vec API uses model.wv.index_to_key (gensim 4+)
+matplotlib
+seaborn
+jupyter              # to open and run the notebook
