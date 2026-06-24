@@ -110,11 +110,13 @@ Then run the cells top to bottom (*Kernel → Restart & Run All*).
 1. **Exploratory Data Analysis** — class balance, and distributions of word count,
    character count, and unique-word count per tweet for each class.
 2. **Text preprocessing** — lowercasing, removal of punctuation / special characters
-   / URLs, stop-word removal, stemming (Snowball) and lemmatization (WordNet).
+   / URLs, stop-word removal, and POS-aware lemmatization (WordNet). *(A Snowball
+   stemmer is also demonstrated in the notebook but is not applied in the final
+   pipeline — lemmatization alone is used.)*
 3. **Vectorization** — two approaches, compared head-to-head:
    - **TF-IDF** — weights terms by frequency and inverse document frequency.
    - **Word2Vec** — averaged word embeddings (mean-embedding vectorizer) trained on
-     the corpus with `gensim`.
+     the **training split** with `gensim`.
 4. **Modeling** — **SVM** (linear kernel) and **Naive Bayes** (`MultinomialNB` for
    TF-IDF, `GaussianNB` for Word2Vec). Each model is evaluated as:
    - a plain classifier,
@@ -137,6 +139,13 @@ relatively small dataset:
 | **Word2Vec** | Naive Bayes | 0.602 | 0.604 | 0.523 | 0.590 | 0.590 |
 
 **Best model: Naive Bayes + TF-IDF ≈ 80.3% accuracy.**
+
+> **Methodology note:** The notebook was updated to remove two sources of data
+> leakage — Word2Vec is now trained on the **training split only**, and k-fold
+> cross-validation vectorizes **inside a `Pipeline`** so the TF-IDF is re-fit on each
+> fold. The **CV columns** and the **Word2Vec rows** above were produced *before*
+> these fixes and are kept for reference; re-run the notebook to regenerate them. The
+> TF-IDF hold-out results (Plain / Bagging / Boosting) are unaffected by the fixes.
 
 ## Key Findings
 
