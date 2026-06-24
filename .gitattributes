@@ -1,0 +1,12 @@
+# Normalize line endings: store text as LF in the repo, check out native on Windows.
+* text=auto
+
+# Text formats tracked with LF to avoid noisy cross-platform diffs.
+*.py     text eol=lf
+*.ipynb  text eol=lf
+*.csv    text eol=lf
+*.md     text eol=lf
+*.txt    text eol=lf
+
+# Let GitHub treat the dataset files as data (kept in repo, not counted as code).
+*.csv linguist-detectable=false
