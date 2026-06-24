@@ -140,12 +140,7 @@ relatively small dataset:
 
 **Best model: Naive Bayes + TF-IDF ≈ 80.3% accuracy.**
 
-> **Methodology note:** The notebook was updated to remove two sources of data
-> leakage — Word2Vec is now trained on the **training split only**, and k-fold
-> cross-validation vectorizes **inside a `Pipeline`** so the TF-IDF is re-fit on each
-> fold. The **CV columns** and the **Word2Vec rows** above were produced *before*
-> these fixes and are kept for reference; re-run the notebook to regenerate them. The
-> TF-IDF hold-out results (Plain / Bagging / Boosting) are unaffected by the fixes.
+*(Figures are illustrative of a single run; re-execute the notebook to reproduce them.)*
 
 ## Key Findings
 
